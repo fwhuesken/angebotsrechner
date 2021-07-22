@@ -3,6 +3,7 @@ const button = document.getElementById("button")
 
 button.addEventListener("click", calculate)
 
+//Calculate discount and all results
 function calculate () {
 
   //Define all offer variables
@@ -26,20 +27,23 @@ function calculate () {
   }
 
   //Calculate price for target groups per poll
-  let totalTargetGroup = 100 * numTargetGroup * (1 - discount(numTargetGroup));
-
+  let totalTargetGroup = parseInt(100 * numTargetGroup * (1 - discount(numTargetGroup)));
+ 
   //Calculate price for monitoring per poll
-  let totalMonitoring = numMonitoring * priceMonitoring + numMonitoring * totalTargetGroup;
-
-  let totalPrice = numPoll * (pricePoll + totalTargetGroup + totalMonitoring);
-
-  console.log("Preis pro Frage: €" + pricePoll)
-  console.log("Preis für Zielgruppenauswertungen pro Frage: €" + Math.round(totalTargetGroup))
-  console.log("Preis für Monitoring pro Frage: €" + totalMonitoring)
-  console.log("Total: €" + totalPrice)
-
-  document.getElementById("result").textContent = 'This is dynamically added text';
+  let totalMonitoring = parseInt(numMonitoring * priceMonitoring + numMonitoring * totalTargetGroup);
   
+  //Calculate total price
+  let totalPrice = parseInt(numPoll * (pricePoll + totalTargetGroup + totalMonitoring));
+
+  //Create result strings
+  let resultPoll = "Preis pro Frage: € " + pricePoll
+  let resultTargetGroup = "Preis für Zielgruppenauswertungen pro Frage: € " + totalTargetGroup
+  let resultMonitoring = "Preis für Monitoring pro Frage: €" + totalMonitoring
+  let resultTotal = "Gesamtpreis: €" + totalPrice + " für " + numPoll + " Frage(n)"
+
+  //Add results to DOM
+  document.getElementById("resultPoll").innerHTML = resultPoll
+  document.getElementById("resultTargetGroup").innerHTML = resultTargetGroup
+  document.getElementById("resultMonitoring").innerHTML = resultMonitoring
+  document.getElementById("resultTotal").innerHTML = resultTotal
 }
-
-

@@ -15,7 +15,8 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <form>
+    <h2>Rabatt auf Zielgruppenauswertungen berechnen</h2>
+    <form id="input">
      
       <label for="numPoll">Anzahl Fragen:</label>
       <input type="number" id="numPoll"><br><br>
@@ -35,10 +36,18 @@
 
       <button type="button" id="button">Berechnen</button>
     </form>
-    <br><br>
-    <div id = "result"></div>
 
+    <br><br>
+
+    <ul id="result">
+      <li id="resultPoll"></li><br>
+      <li id="resultTargetGroup"></li><br>
+      <li id="resultMonitoring"></li><br>
+      <li id="resultTotal"></li><br>
+    </ul>
 
     <script src="script.js"></script>
+
   </body>
+
 </html>
